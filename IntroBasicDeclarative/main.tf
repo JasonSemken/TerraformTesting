@@ -1,17 +1,16 @@
 #Define providers used
 provider "azurerm" {
-  version = "=2.11"
   features {} #This is required for v2 of the provider even if empty or plan will fail
 }
 
 #Data section
 data "azurerm_resource_group" "ResGroup" {
-  name = "RG-SCUSTFStorage"
+  name = "RG-TFTest"
 }
 
 #Resource section
 resource "azurerm_storage_account" "StorAccount1" {
-  name                     = "savtechtfstorage"
+  name                     = "SemkenTechfstorage"
   resource_group_name      = data.azurerm_resource_group.ResGroup.name
   location                 = data.azurerm_resource_group.ResGroup.location
   account_kind             = "StorageV2"
