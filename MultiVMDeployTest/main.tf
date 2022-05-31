@@ -23,7 +23,7 @@ resource "azurerm_subnet" "rg" {
 }
 resource "azurerm_network_interface" "rg" {
   count               = 2
-  name                = "AZ-VM-00-NIC-${count.index}"
+  name                = "TFTest-VM-${count.index}-NIC"
   location            = data.azurerm_resource_group.rg.location
   resource_group_name = data.azurerm_resource_group.rg.name
   ip_configuration {
@@ -34,12 +34,12 @@ resource "azurerm_network_interface" "rg" {
 }
 resource "azurerm_windows_virtual_machine" "rg" {
   count               = 2
-  name                = "AZ-VM-00-${count.index}"
+  name                = "TFTest-VM-${count.index}"
   resource_group_name = data.azurerm_resource_group.rg.name
   location            = data.azurerm_resource_group.rg.location
   size                = "Standard_F2"
-  admin_username      = "SETUSERNAME"
-  admin_password      = "SETPASSWORD"
+  admin_username      = "tftadmin"
+  admin_password      = "Pa55word!@"
   network_interface_ids = [
     azurerm_network_interface.rg.*.id[count.index],
   ]
