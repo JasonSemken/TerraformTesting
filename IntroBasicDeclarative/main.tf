@@ -10,7 +10,7 @@ data "azurerm_resource_group" "ResGroup" {
 
 #Resource section
 resource "azurerm_storage_account" "StorAccount1" {
-  name                     = "SemkenTechfstorage"
+  name                     = "semkentechfstorage"
   resource_group_name      = data.azurerm_resource_group.ResGroup.name
   location                 = data.azurerm_resource_group.ResGroup.location
   account_kind             = "StorageV2"
